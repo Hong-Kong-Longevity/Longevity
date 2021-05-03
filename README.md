@@ -11,7 +11,7 @@ Codes<br/>
 I. [HK death data.R] - Contains data management for Hong Kong deaths data from the Hong Kong Census and Statistics Department (not publicly available and cannot be made available to others)<br/>
 II.[Joinpoint.R] - Contains syntax to plot the joinpoint regression results<br/>
 III. [Arriaga's decomposition.R] - Contains syntax for the arriaga's decomposition domestic comparisons (within Hong Kong)<br/>
-IV.[Aggregated HIC life tables.R] - Contains syntax to calculate an aggregated life tables for the 18 high-income countries<br/>
+IV.[Aggregated high-income countries life tables.R] - Contains syntax to calculate an aggregated life tables for the 18 high-income countries<br/>
 V. [data prep_TCALCI_broad.R] - Contains codes for preparation for the datasets used in the example of applying the function of confidence interval calculation for cause-specific TCAL difference in "TCAL functions.R".<br/>
 VI. [TCAL functions.R] - Contains functions used in TCAL analyses.<br/>
 VII. [HK vs HICs Arriaga's decomposition.R] - Contains syntax for the arriaga's decomposition international comparisons (Hong Kong vs High-income countries)<br/>
