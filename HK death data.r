@@ -2,45 +2,34 @@ library(data.table)
 library(dplyr)
 library(ggplot2)
 
-setwd("C:/Users/FreyaYu/Documents/Tasks/Life Expectancy Task/Data/CS&D Known Deaths")
+setwd("../Life expectancy/CS&D Known Deaths")
 
 # Combine Death Data from 1976 to 2019----------------------------------------------------------------------------------------
-## 76-78
-## 79-94
-## 95-00
-## 01-05
-## 06
-## 07-09
-## 10-19
 
 ## ICD code data
-ICD8 <- fread("D:\\New Folder\\Desktop\\Life expectancy\\Data\\ICD8 (sorted).txt",header=TRUE,
+ICD8 <- fread("../Life expectancy/ICD8 (sorted).txt",header=TRUE,
               colClasses="character")
 names(ICD8)[5] <- "cod"
 
-ICD9 <- fread("D:\\New Folder\\Desktop\\Life expectancy\\Data\\ICD9 (sorted).txt",header=TRUE,
+ICD9 <- fread("../Life expectancy/ICD9 (sorted).txt",header=TRUE,
               colClasses="character")
 names(ICD9)[5] <- "cod"
 
-ICD10 <- fread("D:\\New Folder\\Desktop\\Life expectancy\\Data\\ICD10 (sorted).txt",header=TRUE,
+ICD10 <- fread("../Life expectancy/ICD10 (sorted).txt",header=TRUE,
                colClasses="character")
 names(ICD10)[5] <- "cod"
 
-# write.csv(cbind(unique(ICD9$level3),unique(ICD10$level3)),'C:\\Users\\tomli\\Desktop\\Life expectancy\\Data\\ICD9 to ICD10.csv')
-# write.csv(cbind(unique(ICD8$level3),unique(ICD9$level3)),'C:\\Users\\tomli\\Desktop\\Life expectancy\\Data\\ICD8 to ICD9.csv')
+ICD8_9_10 <- read.csv('../Life expectancy/ICD8_9_10.csv')
 
-ICD8_9_10 <- read.csv('D:\\New Folder\\Desktop\\Life expectancy\\Data\\ICD8_9_10.csv')
-
-## TPU data
-TPU <- read.csv('D:\\New Folder\\Desktop\\Life expectancy\\Data\\TPU\\Death_TPU.csv')
+## TPU (Tertiary Planning Units of Hong Kong) data
+TPU <- read.csv('../Life expectancy/Death_TPU.csv')
 TPU$TPU <- paste0(TPU$TPU)
 
-## 76-78
+## 1976-1978
 format_DeathData7678 <- function(yy){
 	death_HK <- fread(paste0("death",yy,".DAT"),header=FALSE,sep="\t")
 	death_HK <- death_HK %>% 
 				data.table() %>%
-				# Decode, see file "Kd_sale_201712.doc"
 				mutate(Year=paste0('19',substring(V1,8,9)), # Year of Death
 					   Month=substring(V1,6,7), # Month of Death
 					   Sex=factor(substring(V1,5,5)), # Sex
@@ -71,7 +60,7 @@ format_DeathData7678 <- function(yy){
 }
 DeathData7678 <- do.call(rbind,lapply(paste0(7,6:8),format_DeathData7678))
 
-## 10-19
+## 2010-2019
 format_DeathData1019 <- function(yy){
 	death_HK <- fread(paste0("death",yy,".DAT"),header=FALSE,sep="\t")
 	death_HK <- data.table(substring(death_HK$V1,1,33)) %>%
@@ -123,7 +112,7 @@ format_DeathData1019 <- function(yy){
 }
 DeathData1019 <- do.call(rbind,lapply(paste0(1,0:9),format_DeathData1019))
 
-## 07-09
+## 2007-2009
 format_DeathData0709 <- function(yy){
 	death_HK <- fread(paste0("death",yy,".DAT"),header=FALSE,sep="\t")
 	death_HK <- data.table(substring(death_HK$V1,1,33)) %>%
@@ -179,7 +168,7 @@ DeathData0709 <- do.call(rbind,lapply(paste0(0,7:9),format_DeathData0709))
 substrRight <- function(x, n){
   substr(x, nchar(x)-n+1, nchar(x))
 }
-## 06
+## 2006
 format_DeathData06 <- function(yy){
 	death_HK <- fread("DEATH06.csv")
 	names(death_HK) <- gsub(" ","_",names(death_HK))
@@ -231,7 +220,7 @@ format_DeathData06 <- function(yy){
 }
 DeathData06 <- do.call(rbind,lapply(paste0(06),format_DeathData06))
 
-## 01-05
+## 2001-2005
 format_DeathData0105 <- function(yy){
 	death_HK <- fread(paste0("DEATH",yy,".DAT"),header=FALSE,sep="\t")
 	death_HK <- data.table(substring(death_HK$V1,1,32)) %>%
@@ -282,7 +271,7 @@ format_DeathData0105 <- function(yy){
 }
 DeathData0105 <- do.call(rbind,lapply(paste0(0,1:5),format_DeathData0105))
 
-## 95-00
+## 1995-2000
 format_DeathData9500 <- function(yy){
 	if(yy %in% c(99,"00")){
 		death_HK <- fread(paste0("DEATH",yy,".DAT"),header=FALSE,sep="\t")
@@ -331,7 +320,7 @@ format_DeathData9500 <- function(yy){
 }
 DeathData9500 <- do.call(rbind,lapply(c(95:99,"00"),format_DeathData9500))
 
-## 79-94
+## 1979-1994
 format_DeathData7994 <- function(yy){
 	death_HK <- fread(paste0("DEATH",yy,".DAT"),header=FALSE,colClasses="character")
 		# Decode, see file "Kd-sale[1]"
@@ -380,7 +369,7 @@ format_DeathData7994 <- function(yy){
 }
 DeathData7994 <- do.call(rbind,lapply(79:94,format_DeathData7994))
 
-
+# Merge all datasets (1976-2019)
 DeathData7905 <- rbind(DeathData7994[,-c("V1","V2","V3",'ICD10','level3'),with=FALSE],DeathData9500[,-c("V1","V2",'ICD10','level3'),with=FALSE],DeathData0105[,-c('V1','ICD9','level3'),with=FALSE])
 DeathData7905$Age <- factor(DeathData7905$Age)
 
@@ -390,5 +379,8 @@ DeathData7919[Age>99,Age:=99]
 
 DeathData7619 <- rbind(DeathData7678[,-c('V1'),with=FALSE],DeathData7919)
 save(DeathData7619,"C:/Users/FreyaYu/Documents/Tasks/Life Expectancy Task/Data/CS&D Known Deaths/DeathData7619.rda")
+#*******************
+# Remarks: You might see from other succeeding scripts which refers to DeathData7618.rda instead, please note that a similar procedure was conducted to
+# create that file which refers to Hong Kong mortality data from 1976-2018. DeathData7619.rda has just been extended up to 2019 recently hence the name change
 
 
