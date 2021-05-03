@@ -8,13 +8,13 @@ II. Human Mortality Database - Publicly available deaths, exposure and life tabl
 III. World bank - Publicly available life expectancy at birth data by country and sex available at https://data.worldbank.org/indicator/SP.DYN.LE00.IN<br/>
 <br/>
 Codes<br/>
-I. [HK death data.R] - Contains data management for Hong Kong deaths data from the Hong Kong Census and Statistics Department (not publicly available and cannot be made available to others)<br/>
-II.[Joinpoint.R] - Contains syntax to plot the joinpoint regression results<br/>
-III. [Arriaga's decomposition.R] - Contains syntax for the arriaga's decomposition domestic comparisons (within Hong Kong)<br/>
+I. [HK death data.R] - Data management for Hong Kong deaths data from the Hong Kong Census and Statistics Department (non-public data; data access requires an application to the Hong Kong Census and Statistics Department)<br/>
+II.[Joinpoint.R] - Syntax to plot the joinpoint regression results<br/>
+III. [Arriaga's decomposition.R] - Contains syntax for the Arriaga's decomposition domestic comparisons (within Hong Kong)<br/>
 IV.[Aggregated high-income countries life tables.R] - Contains syntax to calculate an aggregated life tables for the 18 high-income countries<br/>
-V. [data prep_TCALCI_broad.R] - Contains codes for preparation for the datasets used in the example of applying the function of confidence interval calculation for cause-specific TCAL difference in "TCAL functions.R".<br/>
+V. [data prep_TCALCI_broad.R] - Contains codes for preparation for the datasets used in the example of applying the function of confidence interval calculation for cause-specific Truncated cross-sectional average length of life (TCAL) difference in "TCAL functions.R".<br/>
 VI. [TCAL functions.R] - Contains functions used in TCAL analyses.<br/>
-VII. [HK vs HICs Arriaga's decomposition.R] - Contains syntax for the arriaga's decomposition international comparisons (Hong Kong vs High-income countries)<br/>
+VII. [HK vs HICs Arriaga's decomposition.R] - Contains syntax for the Arriaga's decomposition international comparisons (Hong Kong vs High-income countries)<br/>
 VIII. [Smoking AF.R] - Contains calculation of smoking attributable fractions by sex and age groups <br/>
 IX. [Smoking attributable mortality plots.R] - Contains syntax in plotting smoking-attributable mortality<br/>
 X. [LifeTableFUN.R] - Contains syntax for the confidence interval calculation of life expectancy at birth<br/>
