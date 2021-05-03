@@ -2,9 +2,8 @@ Data and R syntax for the following article:
 Michael Y Ni, Vladimir Canudas-Romo, Jian Shi, Francis P Flores, Mathew SC Chow, Xiaoxin I Yao, Sai Yin Ho, Tai Hing Lam, C. Mary Schooling, Alan D Lopez, Majid Ezzati, Gabriel M Leung
 Understanding Hong Kong’s path to becoming the world’s longest living population: a comparative study with long-living, high-income countries
 
-List of files
-Datasets (Folders)
-I. WHO Mortality Database - Publicly available mortality data by age, sex, country and cause of death available at https://www.who.int/data/gho/data/themes/mortality-and-global-health-estimates/download-the-raw-data-files-of-the-who-mortality-database
+Data sources
+I. WHO Mortality Database - *Note: Files can't be uploaded due to size limit* Publicly available mortality data by age, sex, country and cause of death available at https://www.who.int/data/gho/data/themes/mortality-and-global-health-estimates/download-the-raw-data-files-of-the-who-mortality-database
 II. Human Mortality Database - Publicly available deaths, exposure and life tables data by age, sex and country available at https://www.mortality.org/hmd/
 III. World bank - Publicly available life expectancy at birth data by country and sex available at https://data.worldbank.org/indicator/SP.DYN.LE00.IN
 
