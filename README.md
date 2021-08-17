@@ -20,4 +20,4 @@ IX. [Smoking attributable mortality plots.R] - Contains syntax in plotting smoki
 X. [LifeTableFUN.R] - Contains syntax for the confidence interval calculation of life expectancy at birth<br/>
 XI [Migrants analysis.R] - Contains syntax to calculate the life expectancy at birth by migrant status in Hong Kong and mortality rates by single age for Hong Kong and high-income countries<br/>
 XII. [e0 HK vs Japan 1986-2017.R] - Contains syntax to calculate confidence interval of Hong Kong and Japan's life expectancy at birth]<br/>
-XII. [Arriaga 95CI.R] - Contains syntax to calculate confidence interval of Hong Kong vs High-income countries' changes in difference in life expectancy at birth]<br/>
+XIII. [Arriaga 95CI.R] - Contains syntax to calculate confidence interval of Hong Kong vs High-income countries' changes in difference in life expectancy at birth]<br/>
